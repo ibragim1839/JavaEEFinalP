@@ -44,9 +44,9 @@
 
     <form class="mt-3" method="post" action="/addComment">
         <input type="hidden" value="<%=theDeal.getId()%>" name="id">
-        <div class="form-group">
+        <div>
             <label style="font-size: 20px">Оставить комментарий:</label>
-            <input type="text" class="form-control mt-2" style="height: 100px; max-height: 500px" name="comment">
+            <textarea class="form-control mt-2" style="height: 100px; max-height: 500px" name="comment"></textarea>
         </div>
         <div style="text-align: end" class="mt-3">
             <button class="btn btn-success">Оставить комментрий</button>
@@ -61,8 +61,9 @@
     <%if(!comments.isEmpty()){%>
     <h4 style="margin-top: 20px">Комментарии:</h4>
     <%}%>
+
     <%for(Comment c : comments){
-    if(Objects.equals(c.getClient().getId(), theDeal.getId())){%>
+    if(Objects.equals(c.getClient().getId(), theDeal.getClient().getId())){%>
         <div class="row">
             <div class="col-12" style="background-color: #f8eb86; border-radius: 20px; max-height: 500px; width: 100%;
             padding: 15px; margin-top: 20px">
@@ -77,7 +78,7 @@
     <%}}%>
 
     <%for(Comment c : comments){
-        if(!Objects.equals(c.getClient().getId(), theDeal.getId())){%>
+        if(!Objects.equals(c.getClient().getId(), theDeal.getClient().getId())){%>
         <div class="row">
             <div class="col-12" style="background-color: lightblue; border-radius: 20px; max-height: 500px; width: 100%;
     padding: 15px; margin-top: 20px">
